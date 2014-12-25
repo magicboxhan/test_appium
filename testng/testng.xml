@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite_Android" parallel="false">
+	<parameter name="appDir" value="D:/mobile/Appium/apks" />
+	<parameter name="deviceName" value="Android Emulator" />
+	<parameter name="platformName" value="Android" />
+	<parameter name="platformVersion" value="4.4" />
+	<parameter name="appiumURL" value="http://127.0.0.1:4723/wd/hub" />
+	<parameter name="implicitlyWaitTime" value="10" />
+	<test name="test_baidu_search" preserve-order="true">
+		<parameter name="appName" value="shoujibaidu_16786444.apk" />
+		<parameter name="appPackage" value="com.baidu.searchbox" />
+		<parameter name="appActivity" value=".MainActivity" />
+		<parameter name="keyword" value="test" />
+		<classes>
+			<class name="Hanqing.Android.AppTest">
+				<methods>
+					<include name="test_baidu_search" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+<!-- 	<test name="test_contactManager_addContect" preserve-order="true"> -->
+<!-- 		<parameter name="appName" value="ContactManager.apk" /> -->
+<!-- 		<parameter name="appPackage" value="com.example.android.contactmanager" /> -->
+<!-- 		<parameter name="appActivity" value=".ContactManager" /> -->
+<!-- 		<parameter name="contactName" value="Some Name" /> -->
+<!-- 		<parameter name="contectEmail" value="Some@example.com" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="Hanqing.Android.AppTest"> -->
+<!-- 				<methods> -->
+<!-- 					<include name="test_contactManager_addContect" /> -->
+<!-- 				</methods> -->
+<!-- 			</class> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
+</suite>

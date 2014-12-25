@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite_Android" duration-ms="80565" started-at="2014-11-14T06:56:02Z" finished-at="2014-11-14T06:57:22Z">
+    <groups>
+    </groups>
+    <test name="test_contactManager" duration-ms="80565" started-at="2014-11-14T06:56:02Z" finished-at="2014-11-14T06:57:22Z">
+      <class name="Hanqing.Android.AppTest">
+        <test-method status="PASS" signature="setup_suite()[pri:0, instance:Hanqing.Android.AppTest@34bde49d]" name="setup_suite" is-config="true" duration-ms="7" started-at="2014-11-14T14:56:02Z" finished-at="2014-11-14T14:56:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup_suite -->
+        <test-method status="PASS" signature="setup_test(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)[pri:0, instance:Hanqing.Android.AppTest@34bde49d]" name="setup_test" is-config="true" duration-ms="29007" started-at="2014-11-14T14:56:02Z" finished-at="2014-11-14T14:56:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[D:/mobile/Appium/apks]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ContactManager.apk]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Android Emulator]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Android]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[4.4]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[com.example.android.contactmanager]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[.ContactManager]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[http://127.0.0.1:4723/wd/hub]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup_test -->
+        <test-method status="PASS" signature="test_contactManager(java.lang.String, java.lang.String)[pri:0, instance:Hanqing.Android.AppTest@34bde49d]" name="test_contactManager" duration-ms="50875" started-at="2014-11-14T14:56:31Z" finished-at="2014-11-14T14:57:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Some Name]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Some@example.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test_contactManager -->
+        <test-method status="PASS" signature="teardown_test()[pri:0, instance:Hanqing.Android.AppTest@34bde49d]" name="teardown_test" is-config="true" duration-ms="666" started-at="2014-11-14T14:57:22Z" finished-at="2014-11-14T14:57:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown_test -->
+        <test-method status="PASS" signature="teardown_suite()[pri:0, instance:Hanqing.Android.AppTest@34bde49d]" name="teardown_suite" is-config="true" duration-ms="0" started-at="2014-11-14T14:57:22Z" finished-at="2014-11-14T14:57:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown_suite -->
+      </class> <!-- Hanqing.Android.AppTest -->
+    </test> <!-- test_contactManager -->
+  </suite> <!-- Suite_Android -->
+</testng-results>
