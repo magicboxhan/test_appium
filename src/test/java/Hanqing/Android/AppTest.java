@@ -77,6 +77,8 @@ public class AppTest
 	        capabilities.setCapability("platformVersion", platformVersion);
 	        capabilities.setCapability("appPackage", appPackage);
 	        capabilities.setCapability("appActivity", appActivity);
+	        capabilities.setCapability("unicodeKeyboard", "True");	//可以输入中文
+	        capabilities.setCapability("resetKeyboard", "True");	//隐藏键盘
 	        d = new AndroidDriver(new URL(appiumURL), capabilities);	
 	        d.manage().timeouts().implicitlyWait(implicitlyWaitTime, TimeUnit.SECONDS);
 			l.exit();

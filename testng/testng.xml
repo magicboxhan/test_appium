@@ -10,7 +10,8 @@
 		<parameter name="appName" value="shoujibaidu_16786444.apk" />
 		<parameter name="appPackage" value="com.baidu.searchbox" />
 		<parameter name="appActivity" value=".MainActivity" />
-		<parameter name="keyword" value="test" />
+<!-- 		<parameter name="keyword" value="test" /> -->
+		<parameter name="keyword" value="测试" />
 		<classes>
 			<class name="Hanqing.Android.AppTest">
 				<methods>
