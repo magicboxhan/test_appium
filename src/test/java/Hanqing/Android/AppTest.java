@@ -151,6 +151,7 @@ public class AppTest
 	        }
 	        //测试结束，等待10秒
 	        Thread.sleep(10000);
+			Thread.sleep(10000);
 			Assert.assertEquals(true, true);
 			l.exit();
 		}catch(Exception e){
