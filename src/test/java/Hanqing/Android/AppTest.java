@@ -177,7 +177,7 @@ public class AppTest {
             l.entry();
             //等待界面出现
             Thread.sleep(10000);
-            //开始界面，划动3次
+            //开始界面，划动2次
             for (int i = 0; i < 2; i++) {
                 d.swipe(800, 100, 100, 100, 1000);
                 Thread.sleep(1000);
@@ -188,6 +188,42 @@ public class AppTest {
             d.findElement(By.id("com.dianping.v1:id/start_search")).click();
             d.findElement(By.id("com.dianping.v1:id/search_edit")).sendKeys(city);
             d.findElement(By.id("android:id/text1")).click();
+            //测试结束，等待10秒
+            Thread.sleep(10000);
+            l.exit();
+        } catch (Exception e) {
+            l.error("Error!");
+            e.printStackTrace();
+            Assert.assertEquals(true, false);
+        }
+    }
+
+    @Parameters({
+            "city"
+    })
+    @Test
+    public void test_ctrip(String city) {
+        try {
+            l.entry();
+//            //等待界面出现
+//            Thread.sleep(5000);
+//            //开始界面，划动3次
+//            for (int i = 0; i < 3; i++) {
+//                d.swipe(800, 100, 100, 100, 1000);
+//                Thread.sleep(1000);
+//            }
+//            //点击进入链接
+//            d.findElementsByClassName("android.widget.ImageView").get(1).click();
+//            //搜索关键字
+//            Thread.sleep(2000);
+//            d.findElement(By.id("com.baidu.searchbox:id/baidu_searchbox")).click();
+//            d.findElement(By.id("com.baidu.searchbox:id/SearchTextInput")).sendKeys(city);
+//            d.findElement(By.id("com.baidu.searchbox:id/float_search_or_cancel")).click();
+//            //搜索结果页，切换到webView
+//            Thread.sleep(5000);
+//            for (String context : d.getContextHandles()) {
+//                l.info("Context: {}", context);
+//            }
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
