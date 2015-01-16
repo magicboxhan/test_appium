@@ -11,4 +11,4 @@ Appium测试脚本（Appium + Java + Maven + TestNG + Selenium ）
 修改 -- test
 >>>>>>> test
 
-
+修改 -- test
