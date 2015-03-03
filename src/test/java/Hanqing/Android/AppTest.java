@@ -126,10 +126,15 @@ public class AppTest {
 
     //============================== Test cases ==============================
     @Parameters({
-            "searchKeyword"
+            "searchKeyword",
+            "uid",
+            "pwd"
     })
     @Test
-    public void test_tc(String searchKeyword) {
+    public void test_tc(
+            String searchKeyword, 
+            String uid, 
+            String pwd) {
         try {
             l.entry();
 
@@ -141,8 +146,9 @@ public class AppTest {
             //首页，点击‘跳过’按钮
             d.findElement(By.id("com.tongcheng.android:id/iv_close")).click();
 
-            //底部导航
+            //===== 底部导航 =====
             //发现
+            l.info("底部导航");
             d.findElement(By.id("com.tongcheng.android:id/iv_home_wallet")).click();
             //发现页，点击‘跳过’按钮
             d.findElement(By.name("跳过")).click();
@@ -150,10 +156,17 @@ public class AppTest {
             d.findElement(By.id("com.tongcheng.android:id/iv_home_order")).click();
             //我的
             d.findElement(By.id("com.tongcheng.android:id/iv_home_my")).click();
+            //点击登录链接
+            l.info("登录");
+            d.findElement(By.id("com.tongcheng.android:id/btn_mytc_login")).click();
+            //填写登录信息并登录
+            d.findElement(By.id("com.tongcheng.android:id/login_account")).sendKeys(uid);
+            d.findElement(By.id("com.tongcheng.android:id/login_password")).sendKeys(pwd);
+            d.findElement(By.id("com.tongcheng.android:id/login_commit_btn")).click();
             //首页
             d.findElement(By.id("com.tongcheng.android:id/iv_home_main")).click();
 
-            //首页搜索
+            //===== 首页搜索 =====
             l.info("搜索：{}", searchKeyword);
             //点击搜索框
             d.findElement(By.id("com.tongcheng.android:id/tv_home_actionbar_search")).click();
@@ -172,7 +185,8 @@ public class AppTest {
                 }
             }
 
-            //点击一次搜索结果，展示二次搜索结果
+            //===== 点击一次搜索结果，展示二次搜索结果 =====
+            l.info("点击第一个产品");
             if (names.size() > 0) {
                 names.get(0).click();
             }
@@ -193,7 +207,7 @@ public class AppTest {
                 }
             }
 
-            //点击二次搜索结果
+            //===== 点击二次搜索结果 =====
             if (names2.size() > 0) {
                 names2.get(0).click();
             }

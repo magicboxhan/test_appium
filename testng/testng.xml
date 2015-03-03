@@ -12,6 +12,8 @@
         <parameter name="appPackage" value="com.tongcheng.android"/>
         <parameter name="appActivity" value="com.tongcheng.android.LoadingActivity"/>
         <parameter name="searchKeyword" value="苏州乐园" />
+        <parameter name="uid" value="13584829701" />
+        <parameter name="pwd" value="a820320" />
         <classes>
             <class name="Hanqing.Android.AppTest">
                 <methods>
