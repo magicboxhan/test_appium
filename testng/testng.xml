@@ -6,6 +6,20 @@
     <parameter name="platformVersion" value="4.4"/>
     <parameter name="appiumURL" value="http://127.0.0.1:4723/wd/hub"/>
     <parameter name="implicitlyWaitTime" value="10"/>
+
+    <test name="test_tc" preserve-order="true">
+        <parameter name="appName" value="tongcheng_26902971.apk"/>
+        <parameter name="appPackage" value="com.tongcheng.android"/>
+        <parameter name="appActivity" value="com.tongcheng.android.LoadingActivity"/>
+        <parameter name="searchKeyword" value="苏州乐园" />
+        <classes>
+            <class name="Hanqing.Android.AppTest">
+                <methods>
+                    <include name="test_tc"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
     <!--<test name="test_baidu_search" preserve-order="true">-->
         <!--<parameter name="appName" value="shoujibaidu_16786444.apk"/>-->
         <!--<parameter name="appPackage" value="com.baidu.searchbox"/>-->
@@ -20,19 +34,19 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test name="test_dianping" preserve-order="true">
-        <parameter name="appName" value="dazhongdianping_697.apk"/>
-        <parameter name="appPackage" value="com.dianping.v1"/>
-        <parameter name="appActivity" value="com.dianping.main.guide.SplashScreenActivity"/>
-        <parameter name="city" value="苏州"/>
-        <classes>
-            <class name="Hanqing.Android.AppTest">
-                <methods>
-                    <include name="test_dianping"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test name="test_dianping" preserve-order="true">-->
+        <!--<parameter name="appName" value="dazhongdianping_697.apk"/>-->
+        <!--<parameter name="appPackage" value="com.dianping.v1"/>-->
+        <!--<parameter name="appActivity" value="com.dianping.main.guide.SplashScreenActivity"/>-->
+        <!--<parameter name="city" value="苏州"/>-->
+        <!--<classes>-->
+            <!--<class name="Hanqing.Android.AppTest">-->
+                <!--<methods>-->
+                    <!--<include name="test_dianping"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!-- 	<test name="test_contactManager_addContect" preserve-order="true"> -->
     <!-- 		<parameter name="appName" value="ContactManager.apk" /> -->
     <!-- 		<parameter name="appPackage" value="com.example.android.contactmanager" /> -->

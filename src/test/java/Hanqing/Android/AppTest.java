@@ -6,7 +6,6 @@ import io.appium.java_client.android.AndroidDriver;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -126,6 +125,88 @@ public class AppTest {
     }
 
     //============================== Test cases ==============================
+    @Parameters({
+            "searchKeyword"
+    })
+    @Test
+    public void test_tc(String searchKeyword) {
+        try {
+            l.entry();
+
+            l.info("启动应用");
+
+//            //等待界面出现
+//            Thread.sleep(5000);
+
+            //首页，点击‘跳过’按钮
+            d.findElement(By.id("com.tongcheng.android:id/iv_close")).click();
+
+            //底部导航
+            //发现
+            d.findElement(By.id("com.tongcheng.android:id/iv_home_wallet")).click();
+            //发现页，点击‘跳过’按钮
+            d.findElement(By.name("跳过")).click();
+            //抢购
+            d.findElement(By.id("com.tongcheng.android:id/iv_home_order")).click();
+            //我的
+            d.findElement(By.id("com.tongcheng.android:id/iv_home_my")).click();
+            //首页
+            d.findElement(By.id("com.tongcheng.android:id/iv_home_main")).click();
+
+            //首页搜索
+            l.info("搜索：{}", searchKeyword);
+            //点击搜索框
+            d.findElement(By.id("com.tongcheng.android:id/tv_home_actionbar_search")).click();
+            //输入关键字
+            d.findElement(By.id("com.tongcheng.android:id/keyword")).sendKeys(searchKeyword);
+            //点击结果
+            List<WebElement> names = d.findElements(By.id("com.tongcheng.android:id/name"));
+            l.info("搜索结果数：{}", names.size());
+            List<WebElement> counts = d.findElements(By.id("com.tongcheng.android:id/count"));
+            l.info("搜索结果数量数：{}", names.size());
+            for (int i = 0; i < (names.size() - 1); i++) {
+                try {
+                    l.info("搜索结果：{}，结果数量：{}", names.get(i).getText(), counts.get(i).getText());
+                } catch (Exception e) {
+
+                }
+            }
+
+            //点击一次搜索结果，展示二次搜索结果
+            if (names.size() > 0) {
+                names.get(0).click();
+            }
+            //名称
+            List<WebElement> names2 = d.findElements(By.id("com.tongcheng.android:id/sceneryNameTextView"));
+            l.info("产品数：{}", names2.size());
+            //价格
+            List<WebElement> prices2 = d.findElements(By.id("com.tongcheng.android:id/priceTextView"));
+            l.info("价格数：{}", prices2.size());
+            //评分
+            List<WebElement> values2 = d.findElements(By.id("com.tongcheng.android:id/ratingTextView"));
+            l.info("评分数：{}", values2.size());
+            for (int i = 0; i < names2.size(); i++) {
+                try {
+                    l.info("名称：{}，价格：{}，评分：{}", names2.get(i).getText(), prices2.get(i).getText(), values2.get(i).getText());
+                } catch (Exception e) {
+
+                }
+            }
+
+            //点击二次搜索结果
+            if (names2.size() > 0) {
+                names2.get(0).click();
+            }
+
+            //测试结束，等待10秒
+            Thread.sleep(10000);
+            l.exit();
+        } catch (Exception e) {
+            l.error("Error!");
+            e.printStackTrace();
+            Assert.assertEquals(true, false);
+        }
+    }
 
     /**
      * baidu_16786191.apk
