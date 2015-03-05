@@ -5,13 +5,15 @@ import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
@@ -220,6 +222,10 @@ public class AppTest {
                 names2.get(0).click();
             }
 
+            //屏幕截图
+            takeScreenshot(d, System.getProperty("user.dir"), "testScreenshot", "jpg");
+            l.info("屏幕截图完成");
+
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
@@ -289,6 +295,9 @@ public class AppTest {
             //搜索关键字
             d.findElement(By.id("index-kw")).sendKeys("test");
             d.findElement(By.id("index-kw")).submit();
+            //屏幕截图
+            takeScreenshot(d, System.getProperty("user.dir"), "testScreenshot", "jpg");
+            l.info("屏幕截图完成");
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
@@ -361,6 +370,31 @@ public class AppTest {
             l.error("Error!");
             e.printStackTrace();
             Assert.assertEquals(true, false);
+        }
+    }
+
+//    ======================================== 公共方法 ========================================
+    
+    /**
+     * 错误截图
+     * @param d -- WebDriver
+     * @param filePath -- 保存图片路径
+     * @param fileName -- 保存图片文件名
+     * @param extName -- 保存图片扩展名
+     */
+    public void takeScreenshot(WebDriver d, String filePath, String fileName, String extName){
+        l.entry();
+        try{
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            String timeStr = df.format(new Date());
+            File screenShotFile = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
+            String fileFullPath = String.format("%s//%s_%s.%s", filePath, fileName, timeStr, extName);
+            FileUtils.copyFile(screenShotFile, new File(fileFullPath));
+            l.info("Screenshot file name: {}", fileFullPath);
+            l.exit();
+        }catch (Exception e) {
+            l.error("Error!");
+            e.printStackTrace();
         }
     }
 }
