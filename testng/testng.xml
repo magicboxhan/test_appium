@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite_Android" parallel="false">
     <parameter name="appDir" value="D:/mobile/Appium/apks"/>
+    <parameter name="automationName" value="Appium"/>
     <parameter name="deviceName" value="Android Emulator"/>
     <parameter name="platformName" value="Android"/>
     <parameter name="platformVersion" value="4.4"/>
     <parameter name="appiumURL" value="http://127.0.0.1:4723/wd/hub"/>
     <parameter name="implicitlyWaitTime" value="10"/>
 
-    <test name="test_tc" preserve-order="true">
-        <parameter name="appName" value="tongcheng_26902971.apk"/>
-        <parameter name="appPackage" value="com.tongcheng.android"/>
-        <parameter name="appActivity" value="com.tongcheng.android.LoadingActivity"/>
-        <parameter name="searchKeyword" value="苏州乐园" />
-        <parameter name="uid" value="13584829701" />
-        <parameter name="pwd" value="a820320" />
+    <!--<test name="test_tc" preserve-order="true">-->
+        <!--<parameter name="appName" value="tongcheng_26902971.apk"/>-->
+        <!--<parameter name="appPackage" value="com.tongcheng.android"/>-->
+        <!--<parameter name="appActivity" value="com.tongcheng.android.LoadingActivity"/>-->
+        <!--<parameter name="searchKeyword" value="苏州乐园"/>-->
+        <!--<parameter name="uid" value="13584829701"/>-->
+        <!--<parameter name="pwd" value="a123456"/>-->
+        <!--<classes>-->
+            <!--<class name="Hanqing.Android.AppTest">-->
+                <!--<methods>-->
+                    <!--<include name="test_tc"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test name="test_hqapp" preserve-order="true">
+        <parameter name="appName" value="hqapp.apk"/>
+        <parameter name="appPackage" value="com.example.hqapp"/>
+        <parameter name="appActivity" value=".MainActivity"/>
         <classes>
             <class name="Hanqing.Android.AppTest">
                 <methods>
-                    <include name="test_tc"/>
+                    <include name="test_hqapp"/>
                 </methods>
             </class>
         </classes>
     </test>
     <!--<test name="test_baidu_search" preserve-order="true">-->
-        <!--<parameter name="appName" value="shoujibaidu_16786444.apk"/>-->
+        <!--<parameter name="automationName" value="Selendroid"/>-->
+        <!--<parameter name="appName" value="shoujibaidu_16786712.apk"/>-->
         <!--<parameter name="appPackage" value="com.baidu.searchbox"/>-->
         <!--<parameter name="appActivity" value=".MainActivity"/>-->
-        <!--&lt;!&ndash; 		<parameter name="keyword" value="test" /> &ndash;&gt;-->
-        <!--<parameter name="keyword" value="测试"/>-->
+        <!--<parameter name="keyword" value="test"/>-->
         <!--<classes>-->
             <!--<class name="Hanqing.Android.AppTest">-->
                 <!--<methods>-->
@@ -49,18 +62,18 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <!-- 	<test name="test_contactManager_addContect" preserve-order="true"> -->
-    <!-- 		<parameter name="appName" value="ContactManager.apk" /> -->
-    <!-- 		<parameter name="appPackage" value="com.example.android.contactmanager" /> -->
-    <!-- 		<parameter name="appActivity" value=".ContactManager" /> -->
-    <!-- 		<parameter name="contactName" value="Some Name" /> -->
-    <!-- 		<parameter name="contectEmail" value="Some@example.com" /> -->
-    <!-- 		<classes> -->
-    <!-- 			<class name="Hanqing.Android.AppTest"> -->
-    <!-- 				<methods> -->
-    <!-- 					<include name="test_contactManager_addContect" /> -->
-    <!-- 				</methods> -->
-    <!-- 			</class> -->
-    <!-- 		</classes> -->
-    <!-- 	</test> -->
+    <!--<test name="test_contactManager_addContect" preserve-order="true">-->
+        <!--<parameter name="appName" value="ContactManager.apk"/>-->
+        <!--<parameter name="appPackage" value="com.example.android.contactmanager"/>-->
+        <!--<parameter name="appActivity" value=".ContactManager"/>-->
+        <!--<parameter name="contactName" value="Some Name"/>-->
+        <!--<parameter name="contectEmail" value="Some@example.com"/>-->
+        <!--<classes>-->
+            <!--<class name="Hanqing.Android.AppTest">-->
+                <!--<methods>-->
+                    <!--<include name="test_contactManager_addContect"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>
