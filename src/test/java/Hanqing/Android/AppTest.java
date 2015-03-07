@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
@@ -148,17 +150,18 @@ public class AppTest {
         try {
             l.entry();
 
-            l.info("启动应用");
+            log("启动应用");
 
 //            //等待界面出现
 //            Thread.sleep(5000);
+
 
             //首页，点击‘跳过’按钮
             d.findElement(By.id("com.tongcheng.android:id/iv_close")).click();
 
             //===== 底部导航 =====
             //发现
-            l.info("底部导航");
+            log("底部导航");
             d.findElement(By.id("com.tongcheng.android:id/iv_home_wallet")).click();
             //发现页，点击‘跳过’按钮
             d.findElement(By.name("跳过")).click();
@@ -167,7 +170,7 @@ public class AppTest {
             //我的
             d.findElement(By.id("com.tongcheng.android:id/iv_home_my")).click();
             //点击登录链接
-            l.info("登录");
+            log("登录");
             d.findElement(By.id("com.tongcheng.android:id/btn_mytc_login")).click();
             //填写登录信息并登录
             d.findElement(By.id("com.tongcheng.android:id/login_account")).sendKeys(uid);
@@ -177,41 +180,41 @@ public class AppTest {
             d.findElement(By.id("com.tongcheng.android:id/iv_home_main")).click();
 
             //===== 首页搜索 =====
-            l.info("搜索：{}", searchKeyword);
+            log(String.format("搜索：%s", searchKeyword));
             //点击搜索框
             d.findElement(By.id("com.tongcheng.android:id/tv_home_actionbar_search")).click();
             //输入关键字
             d.findElement(By.id("com.tongcheng.android:id/keyword")).sendKeys(searchKeyword);
             //点击结果
             List<WebElement> names = d.findElements(By.id("com.tongcheng.android:id/name"));
-            l.info("搜索结果数：{}", names.size());
+            log(String.format("搜索结果数：%d", names.size()));
             List<WebElement> counts = d.findElements(By.id("com.tongcheng.android:id/count"));
-            l.info("搜索结果数量数：{}", names.size());
+            log(String.format("搜索结果数量数：%d", names.size()));
             for (int i = 0; i < (names.size() - 1); i++) {
                 try {
-                    l.info("搜索结果：{}，结果数量：{}", names.get(i).getText(), counts.get(i).getText());
+                    log(String.format("搜索结果：%s，结果数量：%s", names.get(i).getText(), counts.get(i).getText()));
                 } catch (Exception e) {
                     //do nothing
                 }
             }
 
             //===== 点击一次搜索结果，展示二次搜索结果 =====
-            l.info("点击第一个产品");
+            log("点击第一个产品");
             if (names.size() > 0) {
                 names.get(0).click();
             }
             //名称
             List<WebElement> names2 = d.findElements(By.id("com.tongcheng.android:id/sceneryNameTextView"));
-            l.info("产品数：{}", names2.size());
+            log(String.format("产品数：%d", names2.size()));
             //价格
             List<WebElement> prices2 = d.findElements(By.id("com.tongcheng.android:id/priceTextView"));
-            l.info("价格数：{}", prices2.size());
+            log(String.format("价格数：%d", prices2.size()));
             //评分
             List<WebElement> values2 = d.findElements(By.id("com.tongcheng.android:id/ratingTextView"));
-            l.info("评分数：{}", values2.size());
+            log(String.format("评分数：%d", values2.size()));
             for (int i = 0; i < names2.size(); i++) {
                 try {
-                    l.info("名称：{}，价格：{}，评分：{}", names2.get(i).getText(), prices2.get(i).getText(), values2.get(i).getText());
+                    log(String.format("名称：%s，价格：%s，评分：%s", names2.get(i).getText(), prices2.get(i).getText(), values2.get(i).getText()));
                 } catch (Exception e) {
                     //do nothing
                 }
@@ -224,13 +227,13 @@ public class AppTest {
 
             //屏幕截图
             takeScreenshot(d, System.getProperty("user.dir"), "testScreenshot", "jpg");
-            l.info("屏幕截图完成");
+            log("屏幕截图完成");
 
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
         } catch (Exception e) {
-            l.error("Error!");
+            log("Error!");
             e.printStackTrace();
             Assert.assertEquals(true, false);
         }
@@ -295,9 +298,7 @@ public class AppTest {
             //搜索关键字
             d.findElement(By.id("index-kw")).sendKeys("test");
             d.findElement(By.id("index-kw")).submit();
-            //屏幕截图
-            takeScreenshot(d, System.getProperty("user.dir"), "testScreenshot", "jpg");
-            l.info("屏幕截图完成");
+
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
@@ -390,11 +391,21 @@ public class AppTest {
             File screenShotFile = ((TakesScreenshot) d).getScreenshotAs(OutputType.FILE);
             String fileFullPath = String.format("%s//%s_%s.%s", filePath, fileName, timeStr, extName);
             FileUtils.copyFile(screenShotFile, new File(fileFullPath));
-            l.info("Screenshot file name: {}", fileFullPath);
+            log(String.format("Screenshot file name: %s_%s.%s", fileName, timeStr, extName));
             l.exit();
         }catch (Exception e) {
             l.error("Error!");
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 同时使用log4j2和reportng记录日志*
+     * @param info
+     */
+    public void log(String info){
+        l.info(info);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Reporter.log(String.format("%s - %s", sdf.format(Calendar.getInstance().getTime()), info));
     }
 }

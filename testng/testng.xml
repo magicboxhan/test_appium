@@ -24,6 +24,7 @@
         </classes>
     </test>
     <!--<test name="test_hqapp" preserve-order="true">-->
+        <!--<parameter name="automationName" value="Selendroid"/>-->
         <!--<parameter name="appName" value="hqapp.apk"/>-->
         <!--<parameter name="appPackage" value="com.example.hqapp"/>-->
         <!--<parameter name="appActivity" value=".MainActivity"/>-->
