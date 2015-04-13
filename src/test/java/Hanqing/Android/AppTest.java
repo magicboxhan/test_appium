@@ -289,6 +289,9 @@ public class AppTest {
             l.entry();
             //等待界面出现
             Thread.sleep(5000);
+            //点击Open URL按钮
+            d.findElementById("com.example.hqapp:id/button_1").click();
+            Thread.sleep(10000);
             //列出所有view
             for (String context : d.getContextHandles()) {
                 l.info("Context: {}", context);
@@ -296,9 +299,11 @@ public class AppTest {
             //切换到webview
             d.context("WEBVIEW_com.example.hqapp");
             //搜索关键字
-            d.findElement(By.id("index-kw")).sendKeys("test");
-            d.findElement(By.id("index-kw")).submit();
-
+            d.findElement(By.name("word")).sendKeys("test");
+            d.findElement(By.name("word")).submit();
+            //获取页面搜索结果
+            Thread.sleep(10000);
+            l.info("Result text: {}", d.findElement(By.id("results")).findElements(By.tagName("a")).get(0).findElement(By.tagName("em")).getText());
             //测试结束，等待10秒
             Thread.sleep(10000);
             l.exit();
